@@ -1,6 +1,6 @@
 # Configure the AWS provider
 provider "aws" {
-  region = "us-east-1"  # Change this to your preferred region
+  region = "ap-south-1"  # Change this to your preferred region
 }
 
 # Create a VPC
@@ -88,9 +88,9 @@ resource "aws_iam_instance_profile" "my_instance_profile" {
 
 # Create an EC2 instance with user data (WordPress installation script)
 resource "aws_instance" "my_ec2_instance" {
-  ami             = "ami-12345678"  # Replace with the desired AMI ID
+  ami             = "ami-0a5ac53f63249fba0"  # Replace with the desired AMI ID
   instance_type   = "t2.micro"      # Change this based on your requirements
-  key_name        = "your_key_pair_name"  # Replace with your key pair name
+  key_name        = "testing-server"  # Replace with your key pair name
 
   subnet_id       = aws_subnet.my_subnet.id
   security_group  = [aws_security_group.my_security_group.id]
@@ -132,7 +132,7 @@ resource "aws_elb" "my_elb" {
 # Create an Auto Scaling Launch Configuration
 resource "aws_launch_configuration" "my_launch_config" {
   name = "my-launch-config"
-  image_id = "ami-12345678"  # Replace with the desired AMI ID
+  image_id = "ami-0a5ac53f63249fba0"  # Replace with the desired AMI ID
   instance_type = "t2.micro"  # Change this based on your requirements
 
   security_groups = [aws_security_group.my_security_group.id]
@@ -158,7 +158,7 @@ resource "aws_autoscaling_group" "my_asg" {
 resource "aws_route53_record" "my_dns_record" {
   name    = "my-website"
   type    = "A"
-  zone_id = "your_zone_id"  # Replace with your Route 53 hosted zone ID
+  zone_id = "amarmattaparthi.com"  # Replace with your Route 53 hosted zone ID
 
   alias {
     name                   = aws_elb.my_elb.dns_name
