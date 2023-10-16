@@ -27,4 +27,4 @@ Step 5: Configure Route 53 (Optional)
 Step 6: Destroy Resources (Optional)
 - If you want to tear down the infrastructure created by Terraform, run:
   - terraform destroy
-- Confirm by typing yes when prompted.
+- Confirm by typing **yes** when prompted.
